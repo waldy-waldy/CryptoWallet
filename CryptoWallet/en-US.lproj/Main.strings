@@ -1,0 +1,18 @@
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "2Tw-HO-oGa"; */
+"2Tw-HO-oGa.normalTitle" = "Button";
+
+/* Class = "UITabBarItem"; title = "Today"; ObjectID = "6Th-wY-IAW"; */
+"6Th-wY-IAW.title" = "Today";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Rex-qj-iGT"; */
+"Rex-qj-iGT.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bQa-bp-5Y9"; */
+"bQa-bp-5Y9.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Coins"; ObjectID = "bj2-ms-ENm"; */
+"bj2-ms-ENm.title" = "Coins";
+
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "zz4-c1-eeR"; */
+"zz4-c1-eeR.text" = "Loading...";
