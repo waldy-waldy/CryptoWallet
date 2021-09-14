@@ -2,7 +2,7 @@
 //  CoinsEntity+CoreDataClass.swift
 //  
 //
-//  Created by neoviso on 9/13/21.
+//  Created by neoviso on 9/14/21.
 //
 //
 

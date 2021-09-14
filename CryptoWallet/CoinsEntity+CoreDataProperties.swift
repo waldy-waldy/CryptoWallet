@@ -2,7 +2,7 @@
 //  CoinsEntity+CoreDataProperties.swift
 //  
 //
-//  Created by neoviso on 9/13/21.
+//  Created by neoviso on 9/14/21.
 //
 //
 
@@ -20,5 +20,7 @@ extension CoinsEntity {
     @NSManaged public var code: String?
     @NSManaged public var name: String?
     @NSManaged public var price: Double
+    @NSManaged public var website: String?
+    @NSManaged public var twitter: String?
 
 }

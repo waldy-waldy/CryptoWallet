@@ -2,6 +2,24 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/InwalletEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/InwalletEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/BalanceEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/BalanceEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/FavouritesEntity+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/FavouritesEntity+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/CoinsEntity+CoreDataClass.swift">
    </FileRef>
    <FileRef

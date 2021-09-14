@@ -58,8 +58,10 @@ class StartScreenViewController: UIViewController {
                             let stringname = str!["name"] as! String
                             let stringcode = str!["symbol"] as! String
                             let stringprice = str!["price"] as! Double
+                            let stringwebsite = str!["websiteUrl"] as? String
+                            let stringtwitter = str!["twitterUrl"] as? String
                             let stringchanges = str!["priceChange1d"] as! Double
-                            createCoins(newItem: CoinsModel(name: stringname, code: stringcode, price: stringprice, changes: stringchanges))
+                            createCoins(newItem: CoinsModel(name: stringname, code: stringcode, price: stringprice, changes: stringchanges, website: stringwebsite, twitter: stringtwitter))
                         }
                         let vc = storyboard?.instantiateViewController(identifier: "MainViewController") as? UITabBarController
                         self!.view.window?.rootViewController = vc
@@ -93,6 +95,8 @@ class StartScreenViewController: UIViewController {
         tempItem.name = newItem.name
         tempItem.price = newItem.price
         tempItem.changes = newItem.changes
+        tempItem.website = newItem.website
+        tempItem.twitter = newItem.twitter
         
         do {
             try context.save()
