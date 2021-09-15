@@ -34,6 +34,20 @@ class CoinsModel {
     }
 }
 
+class MyCoinsModel {
+    var name: String
+    var code: String
+    var price: Double
+    var value: Double
+    
+    init(name: String, code: String, price: Double, value: Double) {
+        self.name = name
+        self.code = code
+        self.price = price
+        self.value = value
+    }
+}
+
 class InwalletModel {
     var code: String
     var value: Double

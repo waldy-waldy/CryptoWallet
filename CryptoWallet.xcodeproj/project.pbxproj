@@ -25,7 +25,9 @@
 		184A0FD226F0F8C100FED5BE /* BalanceEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FD026F0F8C100FED5BE /* BalanceEntity+CoreDataProperties.swift */; };
 		184A0FD326F0F8C100FED5BE /* BalanceEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FCE26F0F8C000FED5BE /* BalanceEntity+CoreDataClass.swift */; };
 		184A0FD426F0F8C100FED5BE /* InwalletEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FCF26F0F8C100FED5BE /* InwalletEntity+CoreDataProperties.swift */; };
-		184A0FD826F0F95E00FED5BE /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FD726F0F95E00FED5BE /* BuyViewController.swift */; };
+		188CD26A26F238AB0062B9E4 /* MyCoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CD26926F238AB0062B9E4 /* MyCoinsViewController.swift */; };
+		188CD26D26F23CF90062B9E4 /* MyCoinsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CD26C26F23CF90062B9E4 /* MyCoinsCell.swift */; };
+		18D0350426F1F0F90042F33B /* BuyCoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0350326F1F0F90042F33B /* BuyCoinViewController.swift */; };
 		18DEABEC26EF9C5900CCA120 /* Paddinglabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEABEB26EF9C5900CCA120 /* Paddinglabel.swift */; };
 		18DEABFC26EFB06B00CCA120 /* CoinsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DEABFB26EFB06B00CCA120 /* CoinsModel.swift */; };
 		18E86F4A26F0C139009BC7CC /* CoinInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E86F4926F0C139009BC7CC /* CoinInfoViewController.swift */; };
@@ -55,7 +57,9 @@
 		184A0FCE26F0F8C000FED5BE /* BalanceEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BalanceEntity+CoreDataClass.swift"; path = "/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/BalanceEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		184A0FCF26F0F8C100FED5BE /* InwalletEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "InwalletEntity+CoreDataProperties.swift"; path = "/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/InwalletEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		184A0FD026F0F8C100FED5BE /* BalanceEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BalanceEntity+CoreDataProperties.swift"; path = "/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/BalanceEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		184A0FD726F0F95E00FED5BE /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
+		188CD26926F238AB0062B9E4 /* MyCoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoinsViewController.swift; sourceTree = "<group>"; };
+		188CD26C26F23CF90062B9E4 /* MyCoinsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoinsCell.swift; sourceTree = "<group>"; };
+		18D0350326F1F0F90042F33B /* BuyCoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCoinViewController.swift; sourceTree = "<group>"; };
 		18DEABEB26EF9C5900CCA120 /* Paddinglabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paddinglabel.swift; sourceTree = "<group>"; };
 		18DEABFB26EFB06B00CCA120 /* CoinsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsModel.swift; sourceTree = "<group>"; };
 		18E86F4926F0C139009BC7CC /* CoinInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoViewController.swift; sourceTree = "<group>"; };
@@ -123,7 +127,9 @@
 				18DEABEB26EF9C5900CCA120 /* Paddinglabel.swift */,
 				18DEABFB26EFB06B00CCA120 /* CoinsModel.swift */,
 				18E86F4926F0C139009BC7CC /* CoinInfoViewController.swift */,
-				184A0FD726F0F95E00FED5BE /* BuyViewController.swift */,
+				18D0350326F1F0F90042F33B /* BuyCoinViewController.swift */,
+				188CD26926F238AB0062B9E4 /* MyCoinsViewController.swift */,
+				188CD26C26F23CF90062B9E4 /* MyCoinsCell.swift */,
 			);
 			path = CryptoWallet;
 			sourceTree = "<group>";
@@ -260,11 +266,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				18150A3E26EF530100B834B3 /* MainViewController.swift in Sources */,
+				188CD26A26F238AB0062B9E4 /* MyCoinsViewController.swift in Sources */,
 				18150A2426EF3F1200B834B3 /* ViewController.swift in Sources */,
 				184A0FD426F0F8C100FED5BE /* InwalletEntity+CoreDataProperties.swift in Sources */,
 				184A0FD126F0F8C100FED5BE /* InwalletEntity+CoreDataClass.swift in Sources */,
+				18D0350426F1F0F90042F33B /* BuyCoinViewController.swift in Sources */,
 				184A0FD226F0F8C100FED5BE /* BalanceEntity+CoreDataProperties.swift in Sources */,
-				184A0FD826F0F95E00FED5BE /* BuyViewController.swift in Sources */,
 				18150A2026EF3F1200B834B3 /* AppDelegate.swift in Sources */,
 				184A0FD326F0F8C100FED5BE /* BalanceEntity+CoreDataClass.swift in Sources */,
 				18E86F4F26F0C400009BC7CC /* CoinsEntity+CoreDataProperties.swift in Sources */,
@@ -273,6 +280,7 @@
 				18E86F5026F0C400009BC7CC /* CoinsEntity+CoreDataClass.swift in Sources */,
 				18054E9026EF6F7700601C20 /* CoinsViewController.swift in Sources */,
 				18150A4126EF539600B834B3 /* HomeViewController.swift in Sources */,
+				188CD26D26F23CF90062B9E4 /* MyCoinsCell.swift in Sources */,
 				18150A2226EF3F1200B834B3 /* SceneDelegate.swift in Sources */,
 				18054E9C26EF8C3800601C20 /* CoinsCell.swift in Sources */,
 				18150A2A26EF3F1200B834B3 /* CryptoWallet.xcdatamodeld in Sources */,

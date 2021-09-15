@@ -98,15 +98,16 @@ class CoinInfoViewController: UIViewController {
         //stringUrl.appendPathComponent(endurl)
         let url = URLRequest(url: stringUrl as URL)
         
-        if let image = imageCache.object(forKey: coinCode as NSString) {
+        if let image = imageCache.object(forKey: coinCode as NSString)
+        {
             coinIconImageView.image = image
         } else {
             AF.request(url).response { [self] response in
                 switch response.result {
                 case .success(let value) :
                     if let data = value {
-                        let img = UIImage(data: data)!
-                        imageCache.setObject(img as UIImage, forKey: self.coinCode as NSString)
+                        let img = UIImage(data: data)
+                        imageCache.setObject(img! as UIImage, forKey: self.coinCode as NSString)
                         self.coinIconImageView.image = img
                     } else {
                         self.coinIconImageView.image = UIImage(systemName: "bitcoinsign.circle")
@@ -119,11 +120,11 @@ class CoinInfoViewController: UIViewController {
     }
     
     @IBAction func buyButtonDidTap(_ sender: Any) {
-        performSegue(withIdentifier: "showBuyPage", sender: self)
+        performSegue(withIdentifier: "showBuyView", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? BuyViewController {
+        if let destination = segue.destination as? BuyCoinViewController {
             destination.codeCoin = coinCode
             destination.rateCOin = tempCoin.price
         }
