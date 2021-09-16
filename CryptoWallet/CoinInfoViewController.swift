@@ -12,8 +12,6 @@ import Alamofire
 class CoinInfoViewController: UIViewController {
 
     //OUTLETS
-    
-    @IBOutlet weak var coinNameLabel: UILabel!
     @IBOutlet weak var changesLabel: PaddingLabel!
     @IBOutlet weak var coinIconImageView: UIImageView!
     @IBOutlet weak var accuracyPriceLabel: UILabel!
@@ -21,7 +19,8 @@ class CoinInfoViewController: UIViewController {
     @IBOutlet weak var twitterButton: UIButton!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var favouriteImageView: UIImageView!
-    
+    @IBOutlet weak var historyBtn: UIButton!
+    @IBOutlet weak var coinNameLabel: UILabel!
     //VARIABLES
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -33,8 +32,18 @@ class CoinInfoViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+        navigationController?.navigationBar.isHidden = false
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    @IBAction func backBtnDidTap(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         requestToAPI()
@@ -45,12 +54,26 @@ class CoinInfoViewController: UIViewController {
         } else {
             favouriteImageView.image = UIImage(systemName: "heart.fill")
         }
+        historyBtn.layer.cornerRadius = 20.0
         websiteButton.layer.cornerRadius = 15.0
         twitterButton.layer.cornerRadius = 15.0
         buyButton.layer.cornerRadius = 15.0
         
         coinNameLabel.text = tempCoin.name
-        accuracyPriceLabel.text = "$ " + String(tempCoin.price)
+        //navigationController?.navigationBar.barTintColor = UIColor(named: "PrimaryColor")
+        //navigationController?.navigationBar.tintColor = UIColor(named: "BackgroundColor")
+        //self.navigationItem.title = tempCoin.name
+        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "BackgroundColor")]
+        
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 10
+        formatter.minimumFractionDigits = 2
+        formatter.decimalSeparator = ". "
+        formatter.groupingSeparator = " "
+                
+        accuracyPriceLabel.text = "$ " + formatter.string(from: NSNumber(value: tempCoin.price))!
         if (tempCoin.website != nil) {
             websiteButton.isHidden = false
         }
@@ -71,6 +94,11 @@ class CoinInfoViewController: UIViewController {
             changesLabel.backgroundColor = UIColor(named: "ValueDown")
             changesLabel.text = String(tempCoin.changes) + " %"
         }
+        changesLabel.layer.masksToBounds = true
+        changesLabel.layer.cornerRadius = 20.0
+        
+        websiteButton.layer.cornerRadius = 20.0
+        twitterButton.layer.cornerRadius = 20.0
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTappped(tapGestureRecognizer:)))
         favouriteImageView.isUserInteractionEnabled = true
@@ -107,8 +135,13 @@ class CoinInfoViewController: UIViewController {
                 case .success(let value) :
                     if let data = value {
                         let img = UIImage(data: data)
-                        imageCache.setObject(img! as UIImage, forKey: self.coinCode as NSString)
-                        self.coinIconImageView.image = img
+                        if img != nil {
+                            imageCache.setObject(img! as UIImage, forKey: self.coinCode as NSString)
+                            self.coinIconImageView.image = img
+                        }
+                        else {
+                            self.coinIconImageView.image = UIImage(systemName: "bitcoinsign.circle")
+                        }
                     } else {
                         self.coinIconImageView.image = UIImage(systemName: "bitcoinsign.circle")
                     }
@@ -120,7 +153,7 @@ class CoinInfoViewController: UIViewController {
     }
     
     @IBAction func buyButtonDidTap(_ sender: Any) {
-        performSegue(withIdentifier: "showBuyView", sender: self)
+        //performSegue(withIdentifier: "showBuyView", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -128,9 +161,18 @@ class CoinInfoViewController: UIViewController {
             destination.codeCoin = coinCode
             destination.rateCOin = tempCoin.price
         }
+        //if let dest = segue.destination as? BuyCoinViewController {
+          //  destination.codeCoin = coinCode
+           // destination.rateCOin = tempCoin.price
+        //}
     }
     
     //BUTTONS
+    
+    @IBAction func historyBtnDidTap(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "PriceHistoryViewController")
+        navigationController?.pushViewController(vc!, animated: true)
+    }
     
     @IBAction func websiteButtonDidTap(_ sender: Any) {
         if let url = URL(string: tempCoin.website!) {

@@ -28,6 +28,16 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
     let formatter2 = NumberFormatter()
     var resultValue = Double()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         isDollars = false
@@ -145,7 +155,7 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func BackButtonDidTap(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func changedType(_ sender: Any) {

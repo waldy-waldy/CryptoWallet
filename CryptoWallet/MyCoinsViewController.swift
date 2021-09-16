@@ -16,7 +16,7 @@ class MyCoinsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 70
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,20 +62,34 @@ class MyCoinsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var allCoinsPriceLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var sumOfPrices = 0.00
+    let formatter = NumberFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        formatter.decimalSeparator = "."
+        formatter.groupingSeparator = " "
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getItems()
-        allCoinsPriceLabel.text = "$ " + String(format: "%.2f", sumOfPrices)
+        allCoinsPriceLabel.text = "$ " + formatter.string(from: NSNumber(value: sumOfPrices))!
         tableView.reloadData()
+        navigationController?.navigationBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
     
     func clearCoins() {
@@ -109,6 +123,13 @@ class MyCoinsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         catch {
             
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? MyCoinsInfoViewController {
+            let tmp = itemsArray[tableView.indexPathForSelectedRow!.row]
+            destination.myCoinModel = MyCoinsModel(name: tmp.name, code: tmp.code, price: tmp.price, value: tmp.value)
         }
     }
 

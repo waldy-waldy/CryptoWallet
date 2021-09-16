@@ -63,10 +63,6 @@ class CoinsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return coinsArray.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showCoinInfo", sender: self)
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CoinsCell = tableView.dequeueReusableCell(withIdentifier: "coinsCell", for: indexPath) as! CoinsCell
         
@@ -151,6 +147,12 @@ class CoinsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         getAllCoins()
         getAllFavouritesCoins()
         tableView.reloadData()
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
