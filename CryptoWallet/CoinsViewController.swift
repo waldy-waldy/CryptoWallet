@@ -16,9 +16,11 @@ class CoinsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //OUTLETS
     
-    @IBOutlet weak var topButton: UIButton!
-    @IBOutlet weak var sortButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sortPriceUp: UIButton!
+    @IBOutlet weak var sortPriceDown: UIButton!
+    @IBOutlet weak var sortChangeUp: UIButton!
+    @IBOutlet weak var sortChangeDown: UIButton!
     
     //VARIABLES
     
@@ -128,12 +130,36 @@ class CoinsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         formatter.decimalSeparator = "."
         formatter.groupingSeparator = " "
         
-        topButton.layer.cornerRadius = 15.0
-        sortButton.layer.cornerRadius = 15.0
+        sortPriceUp.layer.cornerRadius = 15.0
+        sortPriceDown.layer.cornerRadius = 15.0
+        sortChangeUp.layer.cornerRadius = 15.0
+        sortChangeDown.layer.cornerRadius = 15.0
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: NSNotification.Name(rawValue: "reload"), object: nil)
+    }
+    
+    @IBAction func sortPriceUpBtnDidTap(_ sender: Any) {
+        coinsArray[0].coinsList!.sort(by: {$0.price < $1.price})
+        coinsArray[1].coinsList!.sort(by: {$0.price < $1.price})
+        tableView.reloadData()
+    }
+    @IBAction func sortChangeDownBtnDidTap(_ sender: Any) {
+        coinsArray[0].coinsList!.sort(by: {$0.changes > $1.changes})
+        coinsArray[1].coinsList!.sort(by: {$0.changes > $1.changes})
+        tableView.reloadData()
+    }
+    @IBAction func sortChangeUpBtnDidTap(_ sender: Any) {
+        coinsArray[0].coinsList!.sort(by: {$0.changes < $1.changes})
+        coinsArray[1].coinsList!.sort(by: {$0.changes < $1.changes})
+        tableView.reloadData()
+    }
+    @IBAction func sortPriceDownBtnDidTap(_ sender: Any) {
+        coinsArray[0].coinsList!.sort(by: {$0.price > $1.price})
+        coinsArray[1].coinsList!.sort(by: {$0.price > $1.price})
+        tableView.reloadData()
     }
     
     @objc func reloadTable(notification: NSNotification) {

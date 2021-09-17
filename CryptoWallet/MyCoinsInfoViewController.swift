@@ -96,6 +96,12 @@ class MyCoinsInfoViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? PriceHistoryViewController {
+            destination.coinName = myCoinModel.code
+        }
+    }
+    
     func addToBalance(value: Double) {
         do {
             let items = try context.fetch(BalanceEntity.fetchRequest()) as! [BalanceEntity]

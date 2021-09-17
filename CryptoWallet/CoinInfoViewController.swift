@@ -161,18 +161,19 @@ class CoinInfoViewController: UIViewController {
             destination.codeCoin = coinCode
             destination.rateCOin = tempCoin.price
         }
-        //if let dest = segue.destination as? BuyCoinViewController {
-          //  destination.codeCoin = coinCode
-           // destination.rateCOin = tempCoin.price
-        //}
+        if let dest = segue.destination as? PriceHistoryViewController {
+            dest.coinName = tempCoin.name
+        }
     }
     
     //BUTTONS
     
+    /*
     @IBAction func historyBtnDidTap(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "PriceHistoryViewController")
         navigationController?.pushViewController(vc!, animated: true)
     }
+    */
     
     @IBAction func websiteButtonDidTap(_ sender: Any) {
         if let url = URL(string: tempCoin.website!) {

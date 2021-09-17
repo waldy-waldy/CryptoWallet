@@ -113,7 +113,7 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
             if (price <= balance) {
                 updateBalance(cost: price)
                 addToWallet(code: codeCoin, value: price)
-                self.dismiss(animated: true, completion: nil)
+                navigationController?.popViewController(animated: true)
             }
             else {
                 let dialogMessage = UIAlertController(title: NSLocalizedString("Sorry", comment: ""), message: NSLocalizedString("You don't have enough money on your card!", comment: ""), preferredStyle: .alert)
