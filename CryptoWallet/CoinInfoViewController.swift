@@ -163,6 +163,7 @@ class CoinInfoViewController: UIViewController {
         }
         if let dest = segue.destination as? PriceHistoryViewController {
             dest.coinName = tempCoin.name
+            dest.coinCode = tempCoin.code
         }
     }
     

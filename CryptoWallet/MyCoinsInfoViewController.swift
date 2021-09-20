@@ -98,7 +98,8 @@ class MyCoinsInfoViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? PriceHistoryViewController {
-            destination.coinName = myCoinModel.code
+            destination.coinName = myCoinModel.name
+            destination.coinCode = myCoinModel.code
         }
     }
     

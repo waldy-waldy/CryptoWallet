@@ -67,10 +67,44 @@ class StartScreenViewController: UIViewController {
                         self!.view.window?.rootViewController = vc
                         self!.view.window?.makeKeyAndVisible()
                     }
+                    else {
+                        showAlert()
+                    }
                 case .failure(let error):
-                    print(error)
+                    showAlert()
                 }
             }
+        }
+    }
+    
+    func showAlert() {
+        let dialogMessage = UIAlertController(title: NSLocalizedString("Oooops", comment: ""), message: NSLocalizedString("Something going wrong", comment: ""), preferredStyle: .alert)
+        let refresh = UIAlertAction(title: NSLocalizedString("Try again", comment: ""), style: .default, handler: tryAgain)
+        var str = ""
+        if (getItemsCount() > 0) {
+            str = NSLocalizedString("Continue with old data", comment: "")
+        }
+        else {
+            str = NSLocalizedString("Exit", comment: "")
+        }
+        let cancel = UIAlertAction(title: str, style: .default, handler: exitOrCancel)
+        dialogMessage.addAction(refresh)
+        dialogMessage.addAction(cancel)
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+    func tryAgain(alert: UIAlertAction!) {
+        takeCoinsList()
+    }
+    
+    func exitOrCancel(alert: UIAlertAction!) {
+        if (getItemsCount() > 0) {
+            let vc = storyboard?.instantiateViewController(identifier: "MainViewController") as? UITabBarController
+            self.view.window?.rootViewController = vc
+            self.view.window?.makeKeyAndVisible()
+        }
+        else {
+            exit(0)
         }
     }
     
@@ -87,6 +121,18 @@ class StartScreenViewController: UIViewController {
         catch {
             context.rollback()
         }
+    }
+    
+    func getItemsCount() -> Int {
+        var c = 0
+        do {
+            let items = try context.fetch(CoinsEntity.fetchRequest()) as! [CoinsEntity]
+            c = items.count
+        }
+        catch {
+            context.rollback()
+        }
+        return c
     }
     
     func createCoins(newItem: CoinsModel) {

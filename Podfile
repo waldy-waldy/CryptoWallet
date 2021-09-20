@@ -9,4 +9,6 @@ target 'CryptoWallet' do
 
 pod "Alamofire"
 pod "Charts"
+pod "TinyConstraints"
+
 end
