@@ -30,6 +30,8 @@ class StartScreenViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //LOGO
+    
     func rotate() {
         let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.x")
         rotation.toValue = NSNumber(value: Double.pi * 2)
@@ -37,10 +39,6 @@ class StartScreenViewController: UIViewController {
         rotation.isCumulative = true
         rotation.repeatCount = Float.greatestFiniteMagnitude
         imageView.layer.add(rotation, forKey: "rotationAnimation")
-    }
-        
-    override func viewWillAppear(_ animated: Bool) {
-        
     }
     
     //API
@@ -77,6 +75,8 @@ class StartScreenViewController: UIViewController {
         }
     }
     
+    // FAILED API REQUEST
+    
     func showAlert() {
         let dialogMessage = UIAlertController(title: NSLocalizedString("Oooops", comment: ""), message: NSLocalizedString("Something going wrong", comment: ""), preferredStyle: .alert)
         let refresh = UIAlertAction(title: NSLocalizedString("Try again", comment: ""), style: .default, handler: tryAgain)
@@ -92,6 +92,8 @@ class StartScreenViewController: UIViewController {
         dialogMessage.addAction(cancel)
         self.present(dialogMessage, animated: true, completion: nil)
     }
+    
+    // DIALOG BUTTONS
     
     func tryAgain(alert: UIAlertAction!) {
         takeCoinsList()

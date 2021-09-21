@@ -7,6 +7,8 @@
 
 import Foundation
 
+//ALL COINS
+
 class CoinsModel {
     var name: String
     var code: String
@@ -34,6 +36,8 @@ class CoinsModel {
     }
 }
 
+//MY COINS IN WALLET
+
 class MyCoinsModel {
     var name: String
     var code: String
@@ -48,6 +52,8 @@ class MyCoinsModel {
     }
 }
 
+//IN WALLET COINS
+
 class InwalletModel {
     var code: String
     var value: Double
@@ -58,6 +64,8 @@ class InwalletModel {
     }
 }
 
+//FAVOURITE COINS
+
 class FavouritesModel {
     var code: String
     
@@ -66,6 +74,8 @@ class FavouritesModel {
     }
 }
 
+//COINS LIST FOR TABLEVIEW
+
 class CoinsListModel {
     var sectionName: String
     var coinsList: [CoinsModel]?
@@ -73,5 +83,15 @@ class CoinsListModel {
     init(sectionName: String, coinsList: [CoinsModel]){
         self.sectionName = sectionName
         self.coinsList = coinsList
+    }
+}
+
+class History {
+    var historyDate: Date = Date()
+    var historyPrice: Double = 0.0
+    
+    init(date: Date, price: Double) {
+        historyDate = date
+        historyPrice = price
     }
 }

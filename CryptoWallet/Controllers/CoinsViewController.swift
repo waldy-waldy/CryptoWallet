@@ -27,8 +27,6 @@ class CoinsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let starturl = "https://cryptoicon-api.vercel.app/api/icon"
     let formatter = NumberFormatter()
-    //let starturl = "https://cryptoicons.org/api/icon/"
-    //let endurl = "/40"
     var coinsArray = [CoinsListModel(sectionName: NSLocalizedString("Favourites", comment: ""), coinsList: []), CoinsListModel(sectionName: NSLocalizedString("All", comment: ""), coinsList: [])]
     
     //TABLE
@@ -108,22 +106,8 @@ class CoinsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //VIEW
     
-    func clearItems() {
-        do {
-            let items = try context.fetch(FavouritesEntity.fetchRequest()) as! [NSManagedObject]
-            for item in items {
-                context.delete(item)
-            }
-            try context.save()
-        }
-        catch {
-            context.rollback()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //clearItems()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 5
         formatter.minimumFractionDigits = 5
@@ -139,33 +123,6 @@ class CoinsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: NSNotification.Name(rawValue: "reload"), object: nil)
-    }
-    
-    @IBAction func sortPriceUpBtnDidTap(_ sender: Any) {
-        coinsArray[0].coinsList!.sort(by: {$0.price < $1.price})
-        coinsArray[1].coinsList!.sort(by: {$0.price < $1.price})
-        tableView.reloadData()
-    }
-    @IBAction func sortChangeDownBtnDidTap(_ sender: Any) {
-        coinsArray[0].coinsList!.sort(by: {$0.changes > $1.changes})
-        coinsArray[1].coinsList!.sort(by: {$0.changes > $1.changes})
-        tableView.reloadData()
-    }
-    @IBAction func sortChangeUpBtnDidTap(_ sender: Any) {
-        coinsArray[0].coinsList!.sort(by: {$0.changes < $1.changes})
-        coinsArray[1].coinsList!.sort(by: {$0.changes < $1.changes})
-        tableView.reloadData()
-    }
-    @IBAction func sortPriceDownBtnDidTap(_ sender: Any) {
-        coinsArray[0].coinsList!.sort(by: {$0.price > $1.price})
-        coinsArray[1].coinsList!.sort(by: {$0.price > $1.price})
-        tableView.reloadData()
-    }
-    
-    @objc func reloadTable(notification: NSNotification) {
-        getAllCoins()
-        getAllFavouritesCoins()
-        self.tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -188,7 +145,52 @@ class CoinsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    //BUTTONS
+    
+    @IBAction func sortPriceUpBtnDidTap(_ sender: Any) {
+        coinsArray[0].coinsList!.sort(by: {$0.price < $1.price})
+        coinsArray[1].coinsList!.sort(by: {$0.price < $1.price})
+        tableView.reloadData()
+    }
+    
+    @IBAction func sortChangeDownBtnDidTap(_ sender: Any) {
+        coinsArray[0].coinsList!.sort(by: {$0.changes > $1.changes})
+        coinsArray[1].coinsList!.sort(by: {$0.changes > $1.changes})
+        tableView.reloadData()
+    }
+    
+    @IBAction func sortChangeUpBtnDidTap(_ sender: Any) {
+        coinsArray[0].coinsList!.sort(by: {$0.changes < $1.changes})
+        coinsArray[1].coinsList!.sort(by: {$0.changes < $1.changes})
+        tableView.reloadData()
+    }
+    
+    @IBAction func sortPriceDownBtnDidTap(_ sender: Any) {
+        coinsArray[0].coinsList!.sort(by: {$0.price > $1.price})
+        coinsArray[1].coinsList!.sort(by: {$0.price > $1.price})
+        tableView.reloadData()
+    }
+    
+    @objc func reloadTable(notification: NSNotification) {
+        getAllCoins()
+        getAllFavouritesCoins()
+        self.tableView.reloadData()
+    }
+    
     //CORE DATA
+    
+    func clearItems() {
+        do {
+            let items = try context.fetch(FavouritesEntity.fetchRequest()) as! [NSManagedObject]
+            for item in items {
+                context.delete(item)
+            }
+            try context.save()
+        }
+        catch {
+            context.rollback()
+        }
+    }
     
     func getAllCoins() {
         do {

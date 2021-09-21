@@ -468,7 +468,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.42 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5t-ri-nQ5" customClass="PaddingLabel" customModule="CryptoWallet" customModuleProvider="target">
-                                                    <rect key="frame" x="290" y="31.5" width="69" height="27.5"/>
+                                                    <rect key="frame" x="298" y="31.5" width="61" height="19.5"/>
                                                     <color key="backgroundColor" name="ValueUp"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" name="BackgroundColor"/>
@@ -562,7 +562,6 @@
                                     <color key="titleColor" name="BackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="buyButtonDidTap:" destination="s1T-Uj-mIX" eventType="touchUpInside" id="BBC-iE-VN2"/>
                                     <segue destination="OjR-Cl-Q36" kind="show" identifier="showBuyView" id="CoB-8X-KNe"/>
                                 </connections>
                             </button>
@@ -574,12 +573,11 @@
                                     <color key="titleColor" name="PrimaryColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="BackButtonDidTap:" destination="OjR-Cl-Q36" eventType="touchUpInside" id="e3U-Tz-n0s"/>
                                     <action selector="backBtnDidTap:" destination="s1T-Uj-mIX" eventType="touchUpInside" id="h5D-xf-JPS"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="+0.42 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8i6-K8-1RY" customClass="PaddingLabel" customModule="CryptoWallet" customModuleProvider="target">
-                                <rect key="frame" x="308.5" y="103" width="85.5" height="33.5"/>
+                                <rect key="frame" x="316.5" y="103" width="77.5" height="25.5"/>
                                 <color key="backgroundColor" name="ValueUp"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" name="BackgroundColor"/>
@@ -600,7 +598,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rk5-QR-f4b">
-                                <rect key="frame" x="354" y="148" width="40" height="37.5"/>
+                                <rect key="frame" x="354" y="140" width="40" height="37.5"/>
                                 <color key="tintColor" name="PrimaryColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="LIx-XB-QgA"/>
@@ -849,11 +847,14 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lKi-iI-edC">
                                 <rect key="frame" x="20" y="108" width="374" height="32"/>
                                 <segments>
+                                    <segment title="h"/>
                                     <segment title="d"/>
                                     <segment title="w"/>
                                     <segment title="m"/>
-                                    <segment title="y"/>
                                 </segments>
+                                <connections>
+                                    <action selector="onChanging:" destination="ruN-ay-PT9" eventType="valueChanged" id="bhN-FH-Dbb"/>
+                                </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YON-Lo-3PB">
                                 <rect key="frame" x="20" y="159" width="374" height="634"/>
@@ -874,7 +875,7 @@
                                                 <color key="textColor" name="AdditionalCOlor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 22594.5725267526" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3a-nT-Fwm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3a-nT-Fwm">
                                                 <rect key="frame" x="10" y="456" width="354" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" name="PrimaryColor"/>
@@ -886,7 +887,7 @@
                                                 <color key="textColor" name="AdditionalCOlor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 594.5725267526" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJT-T2-0rK">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJT-T2-0rK">
                                                 <rect key="frame" x="10" y="514" width="354" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" name="PrimaryColor"/>
@@ -898,7 +899,7 @@
                                                 <color key="textColor" name="AdditionalCOlor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 12544.5725267526" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b82-uC-vX3">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b82-uC-vX3">
                                                 <rect key="frame" x="10" y="572" width="354" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="JiV-QD-3Vy"/>
@@ -913,7 +914,7 @@
                                                 <color key="textColor" name="AdditionalCOlor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 22594.5725267526" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTf-Bs-d6X">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTf-Bs-d6X">
                                                 <rect key="frame" x="10" y="398" width="354" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" name="PrimaryColor"/>
@@ -1059,10 +1060,10 @@
     </scenes>
     <designables>
         <designable name="8i6-K8-1RY">
-            <size key="intrinsicContentSize" width="85.5" height="33.5"/>
+            <size key="intrinsicContentSize" width="77.5" height="25.5"/>
         </designable>
         <designable name="k5t-ri-nQ5">
-            <size key="intrinsicContentSize" width="69" height="27.5"/>
+            <size key="intrinsicContentSize" width="61" height="19.5"/>
         </designable>
     </designables>
     <resources>

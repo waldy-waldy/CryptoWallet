@@ -18,7 +18,6 @@
 		18150A2F26EF3F1400B834B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18150A2D26EF3F1400B834B3 /* LaunchScreen.storyboard */; };
 		18150A3826EF42F400B834B3 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18150A3726EF42F400B834B3 /* StartScreenViewController.swift */; };
 		18150A3E26EF530100B834B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18150A3D26EF530100B834B3 /* MainViewController.swift */; };
-		18150A4126EF539600B834B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18150A4026EF539600B834B3 /* HomeViewController.swift */; };
 		184A0FCA26F0F5F100FED5BE /* FavouritesEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FC926F0F5F100FED5BE /* FavouritesEntity+CoreDataClass.swift */; };
 		184A0FCB26F0F5F100FED5BE /* FavouritesEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FC826F0F5F100FED5BE /* FavouritesEntity+CoreDataProperties.swift */; };
 		184A0FD126F0F8C100FED5BE /* InwalletEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FCD26F0F8C000FED5BE /* InwalletEntity+CoreDataClass.swift */; };
@@ -52,7 +51,6 @@
 		18150A3026EF3F1400B834B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18150A3726EF42F400B834B3 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		18150A3D26EF530100B834B3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		18150A4026EF539600B834B3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		184A0FC826F0F5F100FED5BE /* FavouritesEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavouritesEntity+CoreDataProperties.swift"; path = "/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/FavouritesEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		184A0FC926F0F5F100FED5BE /* FavouritesEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavouritesEntity+CoreDataClass.swift"; path = "/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/FavouritesEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		184A0FCD26F0F8C000FED5BE /* InwalletEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "InwalletEntity+CoreDataClass.swift"; path = "/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/InwalletEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
@@ -107,6 +105,9 @@
 		18150A1E26EF3F1200B834B3 /* CryptoWallet */ = {
 			isa = PBXGroup;
 			children = (
+				18AA2F3726F9EC6800F74723 /* Model */,
+				18AA2F3626F9EC5A00F74723 /* Cells */,
+				18AA2F3526F9EC3500F74723 /* Controllers */,
 				184A0FC926F0F5F100FED5BE /* FavouritesEntity+CoreDataClass.swift */,
 				184A0FCD26F0F8C000FED5BE /* InwalletEntity+CoreDataClass.swift */,
 				184A0FCF26F0F8C100FED5BE /* InwalletEntity+CoreDataProperties.swift */,
@@ -121,23 +122,43 @@
 				18150A2526EF3F1200B834B3 /* Main.storyboard */,
 				18150A2B26EF3F1400B834B3 /* Assets.xcassets */,
 				18150A2D26EF3F1400B834B3 /* LaunchScreen.storyboard */,
+				18DEABEB26EF9C5900CCA120 /* Paddinglabel.swift */,
 				18150A3026EF3F1400B834B3 /* Info.plist */,
 				18150A2826EF3F1200B834B3 /* CryptoWallet.xcdatamodeld */,
+			);
+			path = CryptoWallet;
+			sourceTree = "<group>";
+		};
+		18AA2F3526F9EC3500F74723 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				18150A3726EF42F400B834B3 /* StartScreenViewController.swift */,
 				18150A3D26EF530100B834B3 /* MainViewController.swift */,
-				18150A4026EF539600B834B3 /* HomeViewController.swift */,
-				18054E8F26EF6F7700601C20 /* CoinsViewController.swift */,
-				18054E9B26EF8C3800601C20 /* CoinsCell.swift */,
-				18DEABEB26EF9C5900CCA120 /* Paddinglabel.swift */,
-				18DEABFB26EFB06B00CCA120 /* CoinsModel.swift */,
 				18E86F4926F0C139009BC7CC /* CoinInfoViewController.swift */,
 				18D0350326F1F0F90042F33B /* BuyCoinViewController.swift */,
 				188CD26926F238AB0062B9E4 /* MyCoinsViewController.swift */,
-				188CD26C26F23CF90062B9E4 /* MyCoinsCell.swift */,
 				18B480ED26F34BD200B1CD9A /* MyCoinsInfoViewController.swift */,
 				184A3C9426F38AD10015F05B /* PriceHistoryViewController.swift */,
+				18054E8F26EF6F7700601C20 /* CoinsViewController.swift */,
 			);
-			path = CryptoWallet;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		18AA2F3626F9EC5A00F74723 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				18054E9B26EF8C3800601C20 /* CoinsCell.swift */,
+				188CD26C26F23CF90062B9E4 /* MyCoinsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		18AA2F3726F9EC6800F74723 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18DEABFB26EFB06B00CCA120 /* CoinsModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		46CE4FB0B6B34AACC8F3CB6B /* Pods */ = {
@@ -286,7 +307,6 @@
 				18DEABEC26EF9C5900CCA120 /* Paddinglabel.swift in Sources */,
 				18E86F5026F0C400009BC7CC /* CoinsEntity+CoreDataClass.swift in Sources */,
 				18054E9026EF6F7700601C20 /* CoinsViewController.swift in Sources */,
-				18150A4126EF539600B834B3 /* HomeViewController.swift in Sources */,
 				188CD26D26F23CF90062B9E4 /* MyCoinsCell.swift in Sources */,
 				18150A2226EF3F1200B834B3 /* SceneDelegate.swift in Sources */,
 				18054E9C26EF8C3800601C20 /* CoinsCell.swift in Sources */,

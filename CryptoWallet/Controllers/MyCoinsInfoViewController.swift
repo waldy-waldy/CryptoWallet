@@ -10,6 +10,8 @@ import CoreData
 
 class MyCoinsInfoViewController: UIViewController {
 
+    //OUTLETS
+    
     @IBOutlet weak var valueSlider: UISlider!
     @IBOutlet weak var coinValue: UILabel!
     @IBOutlet weak var dollarValue: UILabel!
@@ -18,27 +20,39 @@ class MyCoinsInfoViewController: UIViewController {
     @IBOutlet weak var inwalldollLabel: UILabel!
     @IBOutlet weak var sellAllSwitcher: UISwitch!
     
+    //VARIABLES
+    
+    var myCoinModel = MyCoinsModel(name: "", code: "", price: 0.00, value: 0.00)
+    var dbl = 0.00
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    //VIEW
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.barTintColor = UIColor(named: "PrimaryColor")
-        
         navigationController?.navigationBar.tintColor = UIColor(named: "BackgroundColor")
-        
         self.navigationItem.title = myCoinModel.name
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "BackgroundColor")]
         
         inwallLabel.text = String(format:"%.6f", myCoinModel.value) + " " + myCoinModel.code
         inwalldollLabel.text = String(format:"%.2f", myCoinModel.price) + " $"
-        
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "BackgroundColor")]
-        
         valueSlider.maximumValue = Float(myCoinModel.value)
         valueSlider.minimumValue = 0
         sellBtn.layer.cornerRadius = 15.0
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("History", comment: ""), style: .done, target: self, action: #selector(showPricesHistory(sender:)))
-        // Do any additional setup after loading the view.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? PriceHistoryViewController {
+            destination.coinName = myCoinModel.name
+            destination.coinCode = myCoinModel.code
+        }
+    }
+    
+    //CHANGE SELL TYPE
     
     @IBAction func sellSwitched(_ sender: Any) {
         if (sellAllSwitcher.isOn) {
@@ -56,14 +70,14 @@ class MyCoinsInfoViewController: UIViewController {
         }
     }
     
+    //HISTORY BUTTON
+    
     @objc func showPricesHistory(sender: UIBarButtonItem) {
         let vc = (storyboard?.instantiateViewController(identifier: "PriceHistoryViewController"))
         navigationController?.pushViewController(vc!, animated: true)
     }
     
-    var myCoinModel = MyCoinsModel(name: "", code: "", price: 0.00, value: 0.00)
-    var dbl = 0.00
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //CHANGE SELL VALUE
     
     @IBAction func changeSellValue(_ sender: Any) {
         if (valueSlider.value == 0) {
@@ -81,6 +95,8 @@ class MyCoinsInfoViewController: UIViewController {
         }
     }
     
+    //SELL BUTTON
+    
     @IBAction func sellBtnDidTap(_ sender: Any) {
         let dialogMessage = UIAlertController(title: NSLocalizedString("Sure?", comment: ""), message: NSLocalizedString("Are you sure that you want to sell it?", comment: ""), preferredStyle: .alert)
         let y = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: sellCoins)
@@ -96,12 +112,7 @@ class MyCoinsInfoViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? PriceHistoryViewController {
-            destination.coinName = myCoinModel.name
-            destination.coinCode = myCoinModel.code
-        }
-    }
+    //CORE DATA
     
     func addToBalance(value: Double) {
         do {
@@ -156,14 +167,5 @@ class MyCoinsInfoViewController: UIViewController {
             }
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

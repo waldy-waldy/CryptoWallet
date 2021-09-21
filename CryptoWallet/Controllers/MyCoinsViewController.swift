@@ -11,6 +11,58 @@ import Alamofire
 
 class MyCoinsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //OUTLETS
+    
+    @IBOutlet weak var allCoinsPriceLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    //VARIABLES
+    
+    let starturl = "https://cryptoicon-api.vercel.app/api/icon"
+    var itemsArray = [MyCoinsModel]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var sumOfPrices = 0.00
+    let formatter = NumberFormatter()
+    
+    //VIEW
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        formatter.decimalSeparator = "."
+        formatter.groupingSeparator = " "
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getItems()
+        allCoinsPriceLabel.text = "$ " + formatter.string(from: NSNumber(value: sumOfPrices))!
+        tableView.reloadData()
+        navigationController?.navigationBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? MyCoinsInfoViewController {
+            let tmp = itemsArray[tableView.indexPathForSelectedRow!.row]
+            destination.myCoinModel = MyCoinsModel(name: tmp.name, code: tmp.code, price: tmp.price, value: tmp.value)
+        }
+    }
+
+    //TABLE VIEW
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemsArray.count
     }
@@ -56,41 +108,7 @@ class MyCoinsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    let starturl = "https://cryptoicon-api.vercel.app/api/icon"
-    var itemsArray = [MyCoinsModel]()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    @IBOutlet weak var allCoinsPriceLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    var sumOfPrices = 0.00
-    let formatter = NumberFormatter()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableFooterView = UIView()
-        
-        formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-        formatter.decimalSeparator = "."
-        formatter.groupingSeparator = " "
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getItems()
-        allCoinsPriceLabel.text = "$ " + formatter.string(from: NSNumber(value: sumOfPrices))!
-        tableView.reloadData()
-        navigationController?.navigationBar.isHidden = true
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = false
-    }
+    //CORE DATA
     
     func clearCoins() {
         do {
@@ -125,22 +143,4 @@ class MyCoinsViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? MyCoinsInfoViewController {
-            let tmp = itemsArray[tableView.indexPathForSelectedRow!.row]
-            destination.myCoinModel = MyCoinsModel(name: tmp.name, code: tmp.code, price: tmp.price, value: tmp.value)
-        }
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

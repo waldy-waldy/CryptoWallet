@@ -12,6 +12,7 @@ import Alamofire
 class CoinInfoViewController: UIViewController {
 
     //OUTLETS
+    
     @IBOutlet weak var changesLabel: PaddingLabel!
     @IBOutlet weak var coinIconImageView: UIImageView!
     @IBOutlet weak var accuracyPriceLabel: UILabel!
@@ -21,6 +22,7 @@ class CoinInfoViewController: UIViewController {
     @IBOutlet weak var favouriteImageView: UIImageView!
     @IBOutlet weak var historyBtn: UIButton!
     @IBOutlet weak var coinNameLabel: UILabel!
+    
     //VARIABLES
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -44,27 +46,37 @@ class CoinInfoViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? BuyCoinViewController {
+            destination.codeCoin = coinCode
+            destination.rateCOin = tempCoin.price
+        }
+        if let dest = segue.destination as? PriceHistoryViewController {
+            dest.coinName = tempCoin.name
+            dest.coinCode = tempCoin.code
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         requestToAPI()
+        
         tempCoin = getCoinByCode(code: coinCode)
+        
         let tmp = checkFavourite(code: tempCoin.code)
         if tmp == false {
             favouriteImageView.image = UIImage(systemName: "heart")
         } else {
             favouriteImageView.image = UIImage(systemName: "heart.fill")
         }
+        
         historyBtn.layer.cornerRadius = 20.0
         websiteButton.layer.cornerRadius = 15.0
         twitterButton.layer.cornerRadius = 15.0
         buyButton.layer.cornerRadius = 15.0
         
         coinNameLabel.text = tempCoin.name
-        //navigationController?.navigationBar.barTintColor = UIColor(named: "PrimaryColor")
-        //navigationController?.navigationBar.tintColor = UIColor(named: "BackgroundColor")
-        //self.navigationItem.title = tempCoin.name
-        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: "BackgroundColor")]
-        
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -104,6 +116,8 @@ class CoinInfoViewController: UIViewController {
         favouriteImageView.isUserInteractionEnabled = true
         favouriteImageView.addGestureRecognizer(tapGestureRecognizer)
     }
+    
+    // ADD TO FAVOURITE
     
     @objc func imageTappped(tapGestureRecognizer: UITapGestureRecognizer) {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
@@ -151,30 +165,8 @@ class CoinInfoViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func buyButtonDidTap(_ sender: Any) {
-        //performSegue(withIdentifier: "showBuyView", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? BuyCoinViewController {
-            destination.codeCoin = coinCode
-            destination.rateCOin = tempCoin.price
-        }
-        if let dest = segue.destination as? PriceHistoryViewController {
-            dest.coinName = tempCoin.name
-            dest.coinCode = tempCoin.code
-        }
-    }
-    
+        
     //BUTTONS
-    
-    /*
-    @IBAction func historyBtnDidTap(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(identifier: "PriceHistoryViewController")
-        navigationController?.pushViewController(vc!, animated: true)
-    }
-    */
     
     @IBAction func websiteButtonDidTap(_ sender: Any) {
         if let url = URL(string: tempCoin.website!) {

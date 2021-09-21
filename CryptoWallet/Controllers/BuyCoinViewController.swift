@@ -16,7 +16,6 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var valueTextEdit: UITextField!
     @IBOutlet weak var coinCodeLabel: UILabel!
     @IBOutlet weak var coinDollarLabel: UILabel!
-    @IBOutlet weak var scrollView: UIScrollView!
     
     //VARIABLES
     
@@ -27,6 +26,8 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
     let formatter = NumberFormatter()
     let formatter2 = NumberFormatter()
     var resultValue = Double()
+    
+    //VIEW
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,8 +59,9 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
         formatter2.groupingSeparator = " "
         
         balanceLabel.text = String(formatter.string(from: NSNumber(value: getBalance()))!)
-        // Do any additional setup after loading the view.
     }
+    
+    //TEXTFIELD
     
     @IBAction func endTyping(_ sender: Any) {
         view.endEditing(true)
@@ -67,7 +69,6 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
         return true
     }
     
@@ -96,30 +97,6 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
             }
             else {
                 coinDollarLabel.text = "0.00 " + "$"
-            }
-        }
-    }
-    
-    @IBAction func buyButtonDidTap(_ sender: Any) {
-        let balance = getBalance()
-        var price = 0.00
-        if (valueTextEdit.text?.count != 0){
-            if (changeType.selectedSegmentIndex == 0) {
-                price = Double(valueTextEdit.text!)!
-            }
-            else {
-                price = resultValue
-            }
-            if (price <= balance) {
-                updateBalance(cost: price)
-                addToWallet(code: codeCoin, value: price)
-                navigationController?.popViewController(animated: true)
-            }
-            else {
-                let dialogMessage = UIAlertController(title: NSLocalizedString("Sorry", comment: ""), message: NSLocalizedString("You don't have enough money on your card!", comment: ""), preferredStyle: .alert)
-                let ok = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil)
-                dialogMessage.addAction(ok)
-                self.present(dialogMessage, animated: true, completion: nil)
             }
         }
     }
@@ -154,9 +131,37 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
+    //BUTTONS
+    
+    @IBAction func buyButtonDidTap(_ sender: Any) {
+        let balance = getBalance()
+        var price = 0.00
+        if (valueTextEdit.text?.count != 0){
+            if (changeType.selectedSegmentIndex == 0) {
+                price = Double(valueTextEdit.text!)!
+            }
+            else {
+                price = resultValue
+            }
+            if (price <= balance) {
+                updateBalance(cost: price)
+                addToWallet(code: codeCoin, value: price)
+                navigationController?.popViewController(animated: true)
+            }
+            else {
+                let dialogMessage = UIAlertController(title: NSLocalizedString("Sorry", comment: ""), message: NSLocalizedString("You don't have enough money on your card!", comment: ""), preferredStyle: .alert)
+                let ok = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil)
+                dialogMessage.addAction(ok)
+                self.present(dialogMessage, animated: true, completion: nil)
+            }
+        }
+    }
+    
     @IBAction func BackButtonDidTap(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
+    //CHANGE SELL TYPE
     
     @IBAction func changedType(_ sender: Any) {
         if (changeType.selectedSegmentIndex == 0) {
@@ -172,6 +177,8 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
             valueTextEdit.text = ""
         }
     }
+    
+    //CORE DATA
     
     func getBalance() -> Double {
         var returnValue = 0.00
