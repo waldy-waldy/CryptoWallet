@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  CryptoWallet
+
+  Created by neoviso on 9/21/21.
+  
+*/
+"Oooops" = "Упс!";
+"Something going wrong" = "Что-то пошло не так";
+"Try again" = "Попробовать еще раз";
+"Continue with old data" = "Продолжить со старыми данными";
+"Exit" = "Выход";
+"Sorry" = "Упс";
+"You don't have enough money on your card!" = "На вашем счете недостаточно средств!";
+"OK" = "Ок";
+"History" = "История";
+"Sure?" = "Вы уверены?";
+"Are you sure that you want to sell it?" = "Вы точно хотите это продать?";
+"Yes" = "Да";
+"No" = "Нет";
+"No data" = "Нет данных";
+"Favourites" = "Любимые";
+"All" = "Все";

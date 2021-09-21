@@ -257,7 +257,7 @@
                                                             <action selector="sellSwitched:" destination="FdQ-z0-3H5" eventType="valueChanged" id="2JY-OD-a1N"/>
                                                         </connections>
                                                     </switch>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Sell all" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fm-aS-UWr">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fm-aS-UWr">
                                                         <rect key="frame" x="50" y="0.0" width="72" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <color key="textColor" name="AdditionalCOlor"/>
@@ -335,6 +335,7 @@
                         <outlet property="sellAllSwitcher" destination="Sq2-eM-zRf" id="YmY-Hf-ssl"/>
                         <outlet property="sellBtn" destination="nEZ-6k-dIN" id="PLm-x1-R3c"/>
                         <outlet property="valueSlider" destination="kTY-Mv-RDc" id="OxJ-T2-Oam"/>
+                        <segue destination="ruN-ay-PT9" kind="show" identifier="showHistoryFromSell" id="YSF-WR-2sN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="824-US-WCt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -468,7 +469,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+0.42 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5t-ri-nQ5" customClass="PaddingLabel" customModule="CryptoWallet" customModuleProvider="target">
-                                                    <rect key="frame" x="298" y="31.5" width="61" height="19.5"/>
+                                                    <rect key="frame" x="290" y="31.5" width="69" height="27.5"/>
                                                     <color key="backgroundColor" name="ValueUp"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" name="BackgroundColor"/>
@@ -577,7 +578,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="+0.42 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8i6-K8-1RY" customClass="PaddingLabel" customModule="CryptoWallet" customModuleProvider="target">
-                                <rect key="frame" x="316.5" y="103" width="77.5" height="25.5"/>
+                                <rect key="frame" x="308.5" y="103" width="85.5" height="33.5"/>
                                 <color key="backgroundColor" name="ValueUp"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" name="BackgroundColor"/>
@@ -598,7 +599,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rk5-QR-f4b">
-                                <rect key="frame" x="354" y="140" width="40" height="37.5"/>
+                                <rect key="frame" x="354" y="148" width="40" height="37.5"/>
                                 <color key="tintColor" name="PrimaryColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="LIx-XB-QgA"/>
@@ -1060,12 +1061,15 @@
     </scenes>
     <designables>
         <designable name="8i6-K8-1RY">
-            <size key="intrinsicContentSize" width="77.5" height="25.5"/>
+            <size key="intrinsicContentSize" width="85.5" height="33.5"/>
         </designable>
         <designable name="k5t-ri-nQ5">
-            <size key="intrinsicContentSize" width="61" height="19.5"/>
+            <size key="intrinsicContentSize" width="69" height="27.5"/>
         </designable>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="YSF-WR-2sN"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo" width="240" height="240"/>
         <image name="arrow.down" catalog="system" width="120" height="128"/>

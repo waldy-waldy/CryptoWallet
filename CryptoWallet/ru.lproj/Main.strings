@@ -1,0 +1,165 @@
+
+/* Class = "UILabel"; text = "  Sell all"; ObjectID = "0fm-aS-UWr"; */
+"0fm-aS-UWr.text" = "  Все";
+
+/* Class = "UILabel"; text = "Max. price"; ObjectID = "1hB-wx-dG7"; */
+"1hB-wx-dG7.text" = "Макс. цена";
+
+/* Class = "UILabel"; text = "Current price"; ObjectID = "2vR-0X-vSh"; */
+"2vR-0X-vSh.text" = "Текущая цена";
+
+/* Class = "UILabel"; text = "Card balance:"; ObjectID = "3lI-mV-dzT"; */
+"3lI-mV-dzT.text" = "Баланс:";
+
+/* Class = "UILabel"; text = "Equal in dollars:"; ObjectID = "4i3-XY-b7p"; */
+"4i3-XY-b7p.text" = "В долларах:";
+
+/* Class = "UIButton"; normalTitle = "USD"; ObjectID = "4tp-Xu-6pX"; */
+"4tp-Xu-6pX.normalTitle" = "USD";
+
+/* Class = "UILabel"; text = "Bitcoin"; ObjectID = "6yw-8B-NAc"; */
+"6yw-8B-NAc.text" = "Биткоин";
+
+/* Class = "UILabel"; text = "+0.42 %"; ObjectID = "8i6-K8-1RY"; */
+"8i6-K8-1RY.text" = "+0.42 %";
+
+/* Class = "UILabel"; text = "In wallet:"; ObjectID = "9Pw-y4-Zx5"; */
+"9Pw-y4-Zx5.text" = "В кошельке:";
+
+/* Class = "UIButton"; normalTitle = "Buy"; ObjectID = "9XX-st-lsE"; */
+"9XX-st-lsE.normalTitle" = "Купить";
+
+/* Class = "UILabel"; text = "$ 9252.64"; ObjectID = "AJd-i6-Gf6"; */
+"AJd-i6-Gf6.text" = "$ 9252.64";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "BVl-Ss-Cpc"; */
+"BVl-Ss-Cpc.text" = "Лейбл";
+
+/* Class = "UIButton"; normalTitle = "Buy"; ObjectID = "DCe-pD-Iaq"; */
+"DCe-pD-Iaq.normalTitle" = "Купить";
+
+/* Class = "UILabel"; text = "Bitcoin"; ObjectID = "EHb-Xo-KSU"; */
+"EHb-Xo-KSU.text" = "Биткоин";
+
+/* Class = "UIButton"; normalTitle = "Pr."; ObjectID = "EQF-m2-wgH"; */
+"EQF-m2-wgH.normalTitle" = "Ст.";
+
+/* Class = "UISegmentedControl"; FXB-Fi-okz.segmentTitles[0] = "Coins"; ObjectID = "FXB-Fi-okz"; */
+"FXB-Fi-okz.segmentTitles[0]" = "Криптовалюта";
+
+/* Class = "UISegmentedControl"; FXB-Fi-okz.segmentTitles[1] = "Dollars"; ObjectID = "FXB-Fi-okz"; */
+"FXB-Fi-okz.segmentTitles[1]" = "Доллары";
+
+/* Class = "UILabel"; text = "$ 2 283.93"; ObjectID = "I8P-ai-7hF"; */
+"I8P-ai-7hF.text" = "$ 2 283.93";
+
+/* Class = "UIButton"; normalTitle = "Twitter"; ObjectID = "KI6-rT-bxZ"; */
+"KI6-rT-bxZ.normalTitle" = "Твиттер";
+
+/* Class = "UIButton"; normalTitle = "Pr."; ObjectID = "LDd-BI-1jC"; */
+"LDd-BI-1jC.normalTitle" = "Ст.";
+
+/* Class = "UIButton"; normalTitle = "Ch."; ObjectID = "LFm-sW-yc8"; */
+"LFm-sW-yc8.normalTitle" = "Изм.";
+
+/* Class = "UILabel"; text = "$ 83424.00"; ObjectID = "Myq-Vm-cuc"; */
+"Myq-Vm-cuc.text" = "$ 83424.00";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "Nhp-rj-UtR"; */
+"Nhp-rj-UtR.text" = "BTC";
+
+/* Class = "UILabel"; text = "$ 00.00"; ObjectID = "PTf-Bs-d6X"; */
+"PTf-Bs-d6X.text" = "$ 00.00";
+
+/* Class = "UILabel"; text = "Accuracy currency price:"; ObjectID = "Pb1-SI-drc"; */
+"Pb1-SI-drc.text" = "Точная текущая цена:";
+
+/* Class = "UILabel"; text = "0.0000000124 BTC"; ObjectID = "Qpm-nw-y7C"; */
+"Qpm-nw-y7C.text" = "0.0000000124 BTC";
+
+/* Class = "UILabel"; text = "Coins"; ObjectID = "WQf-u9-BYt"; */
+"WQf-u9-BYt.text" = "Криптовалюта";
+
+/* Class = "UILabel"; text = "Avg. price"; ObjectID = "X0m-kI-b2Z"; */
+"X0m-kI-b2Z.text" = "Средняя цена";
+
+/* Class = "UIButton"; normalTitle = " Website"; ObjectID = "XGx-hC-wCC"; */
+"XGx-hC-wCC.normalTitle" = " Сайт";
+
+/* Class = "UILabel"; text = "0.0000000124 BTC"; ObjectID = "Z9g-rs-YWd"; */
+"Z9g-rs-YWd.text" = "0.0000000124 BTC";
+
+/* Class = "UILabel"; text = "12.20 $"; ObjectID = "ZPg-tV-e9X"; */
+"ZPg-tV-e9X.text" = "12.20 $";
+
+/* Class = "UILabel"; text = "$ 00.00"; ObjectID = "aJT-T2-0rK"; */
+"aJT-T2-0rK.text" = "$ 00.00";
+
+/* Class = "UILabel"; text = "$ 00.00"; ObjectID = "b82-uC-vX3"; */
+"b82-uC-vX3.text" = "$ 00.00";
+
+/* Class = "UITabBarItem"; title = "Coins"; ObjectID = "bj2-ms-ENm"; */
+"bj2-ms-ENm.title" = "Криптовалюта";
+
+/* Class = "UILabel"; text = "$ 00.00"; ObjectID = "c3a-nT-Fwm"; */
+"c3a-nT-Fwm.text" = "$ 00.00";
+
+/* Class = "UILabel"; text = "10 $"; ObjectID = "gcO-yt-3rg"; */
+"gcO-yt-3rg.text" = "10 $";
+
+/* Class = "UITabBarItem"; title = "My Coins"; ObjectID = "gmZ-4r-0YF"; */
+"gmZ-4r-0YF.title" = "Моя криптовалюта";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "jST-IP-oP3"; */
+"jST-IP-oP3.text" = "Лейбл";
+
+/* Class = "UILabel"; text = "+0.42 %"; ObjectID = "k5t-ri-nQ5"; */
+"k5t-ri-nQ5.text" = "+0.42 %";
+
+/* Class = "UILabel"; text = "Min. price"; ObjectID = "lFt-As-Xr1"; */
+"lFt-As-Xr1.text" = "Мин. цена";
+
+/* Class = "UISegmentedControl"; lKi-iI-edC.segmentTitles[0] = "h"; ObjectID = "lKi-iI-edC"; */
+"lKi-iI-edC.segmentTitles[0]" = "ч";
+
+/* Class = "UISegmentedControl"; lKi-iI-edC.segmentTitles[1] = "d"; ObjectID = "lKi-iI-edC"; */
+"lKi-iI-edC.segmentTitles[1]" = "д";
+
+/* Class = "UISegmentedControl"; lKi-iI-edC.segmentTitles[2] = "w"; ObjectID = "lKi-iI-edC"; */
+"lKi-iI-edC.segmentTitles[2]" = "н";
+
+/* Class = "UISegmentedControl"; lKi-iI-edC.segmentTitles[3] = "m"; ObjectID = "lKi-iI-edC"; */
+"lKi-iI-edC.segmentTitles[3]" = "м";
+
+/* Class = "UIButton"; normalTitle = " Back"; ObjectID = "lWJ-xT-bAF"; */
+"lWJ-xT-bAF.normalTitle" = " Назад";
+
+/* Class = "UIButton"; normalTitle = " Back"; ObjectID = "lbk-iO-Hg3"; */
+"lbk-iO-Hg3.normalTitle" = " Назад";
+
+/* Class = "UIButton"; normalTitle = "Price history"; ObjectID = "lsg-vF-poq"; */
+"lsg-vF-poq.normalTitle" = "История цен";
+
+/* Class = "UIButton"; normalTitle = "Sell"; ObjectID = "nEZ-6k-dIN"; */
+"nEZ-6k-dIN.normalTitle" = "Продать";
+
+/* Class = "UILabel"; text = "BTC"; ObjectID = "qwt-Z7-a3F"; */
+"qwt-Z7-a3F.text" = "BTC";
+
+/* Class = "UILabel"; text = "$ 1000.00"; ObjectID = "sQV-y8-Cfq"; */
+"sQV-y8-Cfq.text" = "$ 1000.00";
+
+/* Class = "UILabel"; text = "Bitcoin"; ObjectID = "uJr-gZ-2dw"; */
+"uJr-gZ-2dw.text" = "Биткоин";
+
+/* Class = "UILabel"; text = "Sell"; ObjectID = "xS7-ZJ-yLQ"; */
+"xS7-ZJ-yLQ.text" = "Продажа";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "zMR-ef-dWr"; */
+"zMR-ef-dWr.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Ch."; ObjectID = "zt7-zi-deH"; */
+"zt7-zi-deH.normalTitle" = "Изм.";
+
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "zz4-c1-eeR"; */
+"zz4-c1-eeR.text" = "Загрузка...";

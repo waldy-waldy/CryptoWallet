@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  CryptoWallet
+
+  Created by neoviso on 9/21/21.
+  
+*/
+"Oooops" = "Oooops";
+"Something going wrong" = "Something going wrong";
+"Try again" = "Try again";
+"Continue with old data" = "Continue with old data";
+"Exit" = "Exit";
+"Sorry" = "Sorry";
+"You don't have enough money on your card!" = "You don't have enough money on your card!";
+"OK" = "OK";
+"History" = "History";
+"Sure?" = "Sure?";
+"Are you sure that you want to sell it?" = "Are you sure that you want to sell it?";
+"Yes" = "Yes";
+"No" = "No";
+"No data" = "No Data";
+"Favourites" = "Favourites";
+"All" = "All";

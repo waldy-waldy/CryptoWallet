@@ -73,8 +73,7 @@ class MyCoinsInfoViewController: UIViewController {
     //HISTORY BUTTON
     
     @objc func showPricesHistory(sender: UIBarButtonItem) {
-        let vc = (storyboard?.instantiateViewController(identifier: "PriceHistoryViewController"))
-        navigationController?.pushViewController(vc!, animated: true)
+        performSegue(withIdentifier: "showHistoryFromSell", sender: self)
     }
     
     //CHANGE SELL VALUE

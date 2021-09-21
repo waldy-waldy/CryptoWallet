@@ -25,6 +25,7 @@
 		184A0FD326F0F8C100FED5BE /* BalanceEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FCE26F0F8C000FED5BE /* BalanceEntity+CoreDataClass.swift */; };
 		184A0FD426F0F8C100FED5BE /* InwalletEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A0FCF26F0F8C100FED5BE /* InwalletEntity+CoreDataProperties.swift */; };
 		184A3C9526F38AD10015F05B /* PriceHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184A3C9426F38AD10015F05B /* PriceHistoryViewController.swift */; };
+		18528EEB26F9F69A00C9FC93 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18528EED26F9F69A00C9FC93 /* Localizable.strings */; };
 		188CD26A26F238AB0062B9E4 /* MyCoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CD26926F238AB0062B9E4 /* MyCoinsViewController.swift */; };
 		188CD26D26F23CF90062B9E4 /* MyCoinsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CD26C26F23CF90062B9E4 /* MyCoinsCell.swift */; };
 		18B480EE26F34BD200B1CD9A /* MyCoinsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B480ED26F34BD200B1CD9A /* MyCoinsInfoViewController.swift */; };
@@ -58,6 +59,10 @@
 		184A0FCF26F0F8C100FED5BE /* InwalletEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "InwalletEntity+CoreDataProperties.swift"; path = "/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/InwalletEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		184A0FD026F0F8C100FED5BE /* BalanceEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BalanceEntity+CoreDataProperties.swift"; path = "/Users/neoviso/Desktop/Tasks/CryptoWallet/CryptoWallet/BalanceEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		184A3C9426F38AD10015F05B /* PriceHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceHistoryViewController.swift; sourceTree = "<group>"; };
+		18528EE526F9F4C600C9FC93 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		18528EE626F9F4C600C9FC93 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		18528EEC26F9F69A00C9FC93 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18528EEF26F9F69F00C9FC93 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		188CD26926F238AB0062B9E4 /* MyCoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoinsViewController.swift; sourceTree = "<group>"; };
 		188CD26C26F23CF90062B9E4 /* MyCoinsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoinsCell.swift; sourceTree = "<group>"; };
 		18B480ED26F34BD200B1CD9A /* MyCoinsInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoinsInfoViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +130,7 @@
 				18DEABEB26EF9C5900CCA120 /* Paddinglabel.swift */,
 				18150A3026EF3F1400B834B3 /* Info.plist */,
 				18150A2826EF3F1200B834B3 /* CryptoWallet.xcdatamodeld */,
+				18528EED26F9F69A00C9FC93 /* Localizable.strings */,
 			);
 			path = CryptoWallet;
 			sourceTree = "<group>";
@@ -221,6 +227,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 18150A1326EF3F1100B834B3;
 			productRefGroup = 18150A1D26EF3F1200B834B3 /* Products */;
@@ -238,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18150A2F26EF3F1400B834B3 /* LaunchScreen.storyboard in Resources */,
+				18528EEB26F9F69A00C9FC93 /* Localizable.strings in Resources */,
 				18150A2C26EF3F1400B834B3 /* Assets.xcassets in Resources */,
 				18150A2726EF3F1200B834B3 /* Main.storyboard in Resources */,
 			);
@@ -326,6 +334,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				18150A2626EF3F1200B834B3 /* Base */,
+				18528EE526F9F4C600C9FC93 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -334,8 +343,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				18150A2E26EF3F1400B834B3 /* Base */,
+				18528EE626F9F4C600C9FC93 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		18528EED26F9F69A00C9FC93 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18528EEC26F9F69A00C9FC93 /* en */,
+				18528EEF26F9F69F00C9FC93 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
