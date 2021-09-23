@@ -24,7 +24,6 @@ class MyCoinsInfoViewController: UIViewController {
     
     var myCoinModel = MyCoinsModel(name: "", code: "", price: 0.00, value: 0.00)
     var dbl = 0.00
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //VIEW
     
@@ -106,65 +105,13 @@ class MyCoinsInfoViewController: UIViewController {
     }
     
     func sellCoins(alert: UIAlertAction!) {
-        addToBalance(value: dbl)
-        removeFromWallet()
-        navigationController?.popViewController(animated: true)
-    }
-    
-    //CORE DATA
-    
-    func addToBalance(value: Double) {
-        do {
-            let items = try context.fetch(BalanceEntity.fetchRequest()) as! [BalanceEntity]
-            if items.count > 0 {
-                let tmpBalance = items.first
-                tmpBalance!.value = tmpBalance!.value + value
-                do {
-                    try context.save()
-                }
-                catch {
-                    context.rollback()
-                }
-            }
-        }
-        catch {
-            
-        }
-    }
-    
-    func removeFromWallet() {
+        Database().addToBalance(value: dbl)
         if (valueSlider.value == valueSlider.maximumValue) {
-            do {
-                let items = try context.fetch(InwalletEntity.fetchRequest()) as! [InwalletEntity]
-                let item = items.first(where: { $0.code == myCoinModel.code })
-                context.delete(item!)
-                do {
-                    try context.save()
-                }
-                catch {
-                    context.rollback()
-                }
-            }
-            catch {
-                
-            }
+            Database().removeFromWallet(code: myCoinModel.code)
         }
         else {
-            do {
-                let items = try context.fetch(InwalletEntity.fetchRequest()) as! [InwalletEntity]
-                let item = items.first(where: { $0.code == myCoinModel.code })
-                item!.value = item!.value - Double(valueSlider.value)
-                do {
-                    try context.save()
-                }
-                catch {
-                    context.rollback()
-                }
-            }
-            catch {
-                
-            }
+            Database().subFromWallet(code: myCoinModel.code, value: Double(valueSlider.value))
         }
+        navigationController?.popViewController(animated: true)
     }
-    
 }

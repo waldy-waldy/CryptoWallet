@@ -24,7 +24,6 @@ class CoinsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //VARIABLES
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let starturl = "https://cryptoicon-api.vercel.app/api/icon"
     let formatter = NumberFormatter()
     var coinsArray = [CoinsListModel(sectionName: NSLocalizedString("Favourites", comment: ""), coinsList: []), CoinsListModel(sectionName: NSLocalizedString("All", comment: ""), coinsList: [])]
@@ -127,8 +126,8 @@ class CoinsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getAllCoins()
-        getAllFavouritesCoins()
+        coinsArray[1].coinsList = Database().getAllCoins()
+        coinsArray[0].coinsList = Database().getAllFavouritesCoins()
         tableView.reloadData()
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -172,52 +171,9 @@ class CoinsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @objc func reloadTable(notification: NSNotification) {
-        getAllCoins()
-        getAllFavouritesCoins()
+        coinsArray[1].coinsList = Database().getAllCoins()
+        coinsArray[0].coinsList = Database().getAllFavouritesCoins()
         self.tableView.reloadData()
-    }
-    
-    //CORE DATA
-    
-    func clearItems() {
-        do {
-            let items = try context.fetch(FavouritesEntity.fetchRequest()) as! [NSManagedObject]
-            for item in items {
-                context.delete(item)
-            }
-            try context.save()
-        }
-        catch {
-            context.rollback()
-        }
-    }
-    
-    func getAllCoins() {
-        do {
-            coinsArray[1].coinsList?.removeAll()
-            var tmpCoinsArray = [CoinsEntity]()
-            tmpCoinsArray = try context.fetch(CoinsEntity.fetchRequest())
-            for item in tmpCoinsArray {
-                coinsArray[1].coinsList?.append(CoinsModel(name: item.name!, code: item.code!, price: item.price, changes: item.changes, website: item.website, twitter: item.twitter))
-            }
-        }
-        catch {
-            context.rollback()
-        }
-    }
-    
-    func getAllFavouritesCoins() {
-        do {
-            coinsArray[0].coinsList?.removeAll()
-            var tmpCoinsArray = [FavouritesEntity]()
-            tmpCoinsArray = try context.fetch(FavouritesEntity.fetchRequest())
-            for item in tmpCoinsArray {
-                coinsArray[0].coinsList?.append((coinsArray[1].coinsList?.first(where: {$0.code == item.code!}))!)
-            }
-        }
-        catch {
-            context.rollback()
-        }
     }
     
 }

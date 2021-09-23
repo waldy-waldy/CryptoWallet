@@ -24,7 +24,6 @@ class PriceHistoryViewController: UIViewController, ChartViewDelegate, IAxisValu
     //VARIABLES
     
     weak var axisFormatDelegate: IAxisValueFormatter?
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var pricesHistory = [History]()
     var type = "h"
     var coinName = ""
@@ -169,7 +168,7 @@ class PriceHistoryViewController: UIViewController, ChartViewDelegate, IAxisValu
             sum += item
         }
         avgPriceLabel.text = "$ " + formatter.string(from: NSNumber(value: sum/Double(prices.count)))!
-        currentPriceLabel.text = "$ " + formatter.string(from:  NSNumber(value: getCurrentPrice(name: coinName)))!
+        currentPriceLabel.text = "$ " + formatter.string(from:  NSNumber(value: Database().getCurrentPrice(name: coinName)))!
         
         let set1 = LineChartDataSet(entries: yValues, label: "Price")
         set1.mode = .cubicBezier
@@ -191,6 +190,7 @@ class PriceHistoryViewController: UIViewController, ChartViewDelegate, IAxisValu
     
     //CORE DATA
 
+    /*
     func getCurrentPrice(name: String) -> Double {
         var pr = 0.00
         do {
@@ -202,6 +202,9 @@ class PriceHistoryViewController: UIViewController, ChartViewDelegate, IAxisValu
         }
         return pr
     }
+    */
+ 
+    //API
     
     func getCoinInfo(type: String) {
         DispatchQueue.main.async { [self] in

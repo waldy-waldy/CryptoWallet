@@ -21,7 +21,6 @@ class MyCoinsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     let starturl = "https://cryptoicon-api.vercel.app/api/icon"
     var itemsArray = [MyCoinsModel]()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var sumOfPrices = 0.00
     let formatter = NumberFormatter()
     
@@ -43,7 +42,9 @@ class MyCoinsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getItems()
+        let tmp = Database().getItems()
+        sumOfPrices = tmp.sumOfPrices
+        itemsArray = tmp.itemsArray
         allCoinsPriceLabel.text = "$ " + formatter.string(from: NSNumber(value: sumOfPrices))!
         tableView.reloadData()
         navigationController?.navigationBar.isHidden = true
@@ -108,39 +109,4 @@ class MyCoinsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    //CORE DATA
-    
-    func clearCoins() {
-        do {
-            let items = try context.fetch(InwalletEntity.fetchRequest()) as! [InwalletEntity]
-            for item in items {
-                context.delete(item)
-            }
-            try context.save()
-        }
-        catch {
-            context.rollback()
-        }
-    }
-    
-    func getItems() {
-        do {
-            itemsArray.removeAll()
-            sumOfPrices = 0.00
-            let itemsCoins = try context.fetch(CoinsEntity.fetchRequest()) as! [CoinsEntity]
-            let itemWallet = try context.fetch(InwalletEntity.fetchRequest()) as! [InwalletEntity]
-            for item in itemWallet {
-                let tmp = itemsCoins.first(where: { $0.code == item.code })
-                if tmp != nil {
-                    let pr = item.value * tmp!.price
-                    sumOfPrices += pr
-                    let tempCoin = MyCoinsModel(name: tmp!.name!, code: item.code!, price: pr, value: item.value)
-                    itemsArray.append(tempCoin)
-                }
-            }
-        }
-        catch {
-            
-        }
-    }
 }

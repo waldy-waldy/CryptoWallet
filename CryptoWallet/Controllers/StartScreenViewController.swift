@@ -18,7 +18,6 @@ class StartScreenViewController: UIViewController {
 
     //VARIABLES
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let stringurl = "https://api.coinstats.app/public/v1/coins"
     
     //VIEW
@@ -50,7 +49,7 @@ class StartScreenViewController: UIViewController {
                 case .success(let value):
                     if let resp = value as? [String: Any] {
                         let data = (resp["coins"] as? [Any])!
-                        clearCoins()
+                        Database().clearCoinsEntity()
                         for item in data {
                             let str = item as? [String: Any]
                             let stringname = str!["name"] as! String
@@ -59,7 +58,7 @@ class StartScreenViewController: UIViewController {
                             let stringwebsite = str!["websiteUrl"] as? String
                             let stringtwitter = str!["twitterUrl"] as? String
                             let stringchanges = str!["priceChange1d"] as! Double
-                            createCoins(newItem: CoinsModel(name: stringname, code: stringcode, price: stringprice, changes: stringchanges, website: stringwebsite, twitter: stringtwitter))
+                            Database().createCoins(newItem: CoinsModel(name: stringname, code: stringcode, price: stringprice, changes: stringchanges, website: stringwebsite, twitter: stringtwitter))
                         }
                         let vc = storyboard?.instantiateViewController(identifier: "MainViewController") as? UITabBarController
                         self!.view.window?.rootViewController = vc
@@ -81,7 +80,7 @@ class StartScreenViewController: UIViewController {
         let dialogMessage = UIAlertController(title: NSLocalizedString("Oooops", comment: ""), message: NSLocalizedString("Something going wrong", comment: ""), preferredStyle: .alert)
         let refresh = UIAlertAction(title: NSLocalizedString("Try again", comment: ""), style: .default, handler: tryAgain)
         var str = ""
-        if (getItemsCount() > 0) {
+        if (Database().getItemsCount() > 0) {
             str = NSLocalizedString("Continue with old data", comment: "")
         }
         else {
@@ -100,7 +99,7 @@ class StartScreenViewController: UIViewController {
     }
     
     func exitOrCancel(alert: UIAlertAction!) {
-        if (getItemsCount() > 0) {
+        if (Database().getItemsCount() > 0) {
             let vc = storyboard?.instantiateViewController(identifier: "MainViewController") as? UITabBarController
             self.view.window?.rootViewController = vc
             self.view.window?.makeKeyAndVisible()
@@ -110,47 +109,4 @@ class StartScreenViewController: UIViewController {
         }
     }
     
-    //CORE DATA
-    
-    func clearCoins() {
-        do {
-            let items = try context.fetch(CoinsEntity.fetchRequest()) as! [CoinsEntity]
-            for item in items {
-                context.delete(item)
-            }
-            try context.save()
-        }
-        catch {
-            context.rollback()
-        }
-    }
-    
-    func getItemsCount() -> Int {
-        var c = 0
-        do {
-            let items = try context.fetch(CoinsEntity.fetchRequest()) as! [CoinsEntity]
-            c = items.count
-        }
-        catch {
-            context.rollback()
-        }
-        return c
-    }
-    
-    func createCoins(newItem: CoinsModel) {
-        let tempItem = CoinsEntity(context: context)
-        tempItem.code = newItem.code
-        tempItem.name = newItem.name
-        tempItem.price = newItem.price
-        tempItem.changes = newItem.changes
-        tempItem.website = newItem.website
-        tempItem.twitter = newItem.twitter
-        
-        do {
-            try context.save()
-        }
-        catch {
-            context.rollback()
-        }
-    }
 }

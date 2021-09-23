@@ -25,7 +25,6 @@ class CoinInfoViewController: UIViewController {
     
     //VARIABLES
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var tempCoin = CoinsModel()
     var coinCode = ""
     
@@ -62,9 +61,9 @@ class CoinInfoViewController: UIViewController {
         
         requestToAPI()
         
-        tempCoin = getCoinByCode(code: coinCode)
+        tempCoin = Database().getCoinByCode(code: coinCode)
         
-        let tmp = checkFavourite(code: tempCoin.code)
+        let tmp = Database().checkFavourite(code: tempCoin.code)
         if tmp == false {
             favouriteImageView.image = UIImage(systemName: "heart")
         } else {
@@ -122,11 +121,11 @@ class CoinInfoViewController: UIViewController {
     @objc func imageTappped(tapGestureRecognizer: UITapGestureRecognizer) {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
         if (tappedImage.image == UIImage(systemName: "heart")) {
-            addFavouriteCoin()
+            Database().addFavouriteCoin(code: tempCoin.code)
             tappedImage.image = UIImage(systemName: "heart.fill")
         }
         else {
-            deleteItem(itemCode: coinCode)
+            Database().deleteItem(itemCode: coinCode)
             tappedImage.image = UIImage(systemName: "heart")
         }
     }
@@ -180,61 +179,4 @@ class CoinInfoViewController: UIViewController {
         }
     }
     
-    //CORE DATA
-    
-    func getCoinByCode(code: String) -> CoinsModel {
-        var returnCoin = CoinsModel()
-        do {
-            let items = try context.fetch(CoinsEntity.fetchRequest()) as! [CoinsEntity]
-            let tmpCoin = items.first(where: {$0.code == code})!
-            returnCoin = CoinsModel(name: tmpCoin.name!, code: tmpCoin.code!, price: tmpCoin.price, changes: tmpCoin.changes, website: tmpCoin.website, twitter: tmpCoin.twitter)
-        }
-        catch {
-            context.rollback()
-        }
-        return returnCoin
-    }
-    
-    func checkFavourite(code: String) -> Bool {
-        var check = false
-        do {
-            let items = try context.fetch(FavouritesEntity.fetchRequest()) as! [FavouritesEntity]
-            let tmpCoin = items.first(where: {$0.code == code})
-            if tmpCoin != nil {
-                check = true
-            }
-        }
-        catch {
-            context.rollback()
-        }
-        return check
-    }
-    
-    func addFavouriteCoin() {
-        let tmpCoin = FavouritesEntity(context: context)
-        tmpCoin.code = tempCoin.code
-        
-        do {
-            try context.save()
-        } catch {
-            context.rollback()
-        }
-    }
-    
-    func deleteItem(itemCode: String) {
-        do {
-            let items = try context.fetch(FavouritesEntity.fetchRequest()) as! [FavouritesEntity]
-            let tmpCoin = items.first(where: {$0.code == itemCode})!
-        
-            context.delete(tmpCoin)
-            
-            do {
-                try context.save()
-            } catch {
-                context.rollback()
-            }
-        } catch {
-            context.rollback()
-        }
-    }
 }

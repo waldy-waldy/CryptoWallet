@@ -19,7 +19,6 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
     
     //VARIABLES
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var codeCoin = ""
     var rateCOin = 0.00
     var isDollars = false
@@ -58,7 +57,7 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
         formatter2.decimalSeparator = "."
         formatter2.groupingSeparator = " "
         
-        balanceLabel.text = String(formatter.string(from: NSNumber(value: getBalance()))!)
+        balanceLabel.text = String(formatter.string(from: NSNumber(value: Database().getBalance()))!)
     }
     
     //TEXTFIELD
@@ -134,7 +133,7 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
     //BUTTONS
     
     @IBAction func buyButtonDidTap(_ sender: Any) {
-        let balance = getBalance()
+        let balance = Database().getBalance()
         var price = 0.00
         if (valueTextEdit.text?.count != 0){
             if (changeType.selectedSegmentIndex == 0) {
@@ -144,8 +143,8 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
                 price = resultValue
             }
             if (price <= balance) {
-                updateBalance(cost: price)
-                addToWallet(code: codeCoin, value: price)
+                Database().updateBalance(cost: price)
+                Database().addToWallet(code: codeCoin, value: price)
                 navigationController?.popViewController(animated: true)
             }
             else {
@@ -175,63 +174,6 @@ class BuyCoinViewController: UIViewController, UITextFieldDelegate {
             coinCodeLabel.text = "$"
             coinDollarLabel.text = codeCoin
             valueTextEdit.text = ""
-        }
-    }
-    
-    //CORE DATA
-    
-    func getBalance() -> Double {
-        var returnValue = 0.00
-        do {
-            let items = try context.fetch(BalanceEntity.fetchRequest()) as! [BalanceEntity]
-            returnValue = items.first!.value
-        }
-        catch {
-            
-        }
-        return returnValue
-    }
-    
-    func updateBalance(cost: Double) {
-        do {
-            let items = try context.fetch(BalanceEntity.fetchRequest()) as! [BalanceEntity]
-            if items.count > 0 {
-                let tmpBalance = items.first
-                tmpBalance!.value = tmpBalance!.value - cost
-                do {
-                    try context.save()
-                }
-                catch {
-                    context.rollback()
-                }
-            }
-        }
-        catch {
-            
-        }
-    }
-    
-    func addToWallet(code: String, value: Double) {
-        do {
-            let items = try context.fetch(InwalletEntity.fetchRequest()) as! [InwalletEntity]
-            let item = items.first(where: { $0.code == code })
-            if item != nil {
-                item!.value += value
-            }
-            else {
-                let tmp = InwalletEntity(context: context)
-                tmp.code = code
-                tmp.value = value
-            }
-            do {
-                try context.save()
-            }
-            catch {
-                context.rollback()
-            }
-        }
-        catch {
-            
         }
     }
     

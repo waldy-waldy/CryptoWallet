@@ -74,6 +74,12 @@ class FavouritesModel {
     }
 }
 
+//Coins in wallet
+class CoinsInWallet {
+    var itemsArray = [MyCoinsModel]()
+    var sumOfPrices = 0.00
+}
+
 //COINS LIST FOR TABLEVIEW
 
 class CoinsListModel {
